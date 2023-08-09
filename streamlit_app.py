@@ -3,6 +3,7 @@ import pandas
 import requests
 import snowflake.connector
 
+
 streamlit.title('My Parents New Healthy Diner')
 streamlit.header('Breakfast Menu')
 streamlit.text('🥣 Omega 3 and Blueberry Oatmeal')
@@ -29,6 +30,9 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi")
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # display the result as a table
 streamlit.dataframe(fruityvice_normalized)
+
+streamlit.stop()
+
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
